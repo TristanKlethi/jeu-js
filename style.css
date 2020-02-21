@@ -1,0 +1,102 @@
+
+* {
+    box-sizing: border-box;
+}
+
+#plateau, #controls{
+    display: flex;
+    flex-wrap:wrap;
+    width: 60.5em;
+    height: 20em;
+    justify-content: center;
+}
+
+.joueur1, .grille, .joueur2 {
+    width: 20em;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: center;
+}
+
+.joueur1, .joueur2 {
+    flex-direction: column;
+}
+
+.joueur1 {
+    background-color: lightblue;
+}
+
+.joueur2{
+    background-color: lightgreen;
+}
+
+p {
+    display: flex;
+    flex-wrap:wrap;
+    margin: 2em;
+}
+
+.grille{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.case {
+    width: 6.5em;
+    height: 6.5em;
+    padding: 0.3em;
+    border: black 2px solid;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.case img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.case:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+#controls{
+    display: flex;
+    width: 60.5em;
+    height: 5em;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: gray;
+}
+
+#controls button{
+    display: flex;
+    justify-content: center;
+    width: 4em;
+    height: 2em;
+    margin: 1em;
+}
+
+#controls .end {
+    display: flex;
+    align-content: center;
+    width: 20em;
+    height: 10em;
+    margin: auto;
+    
+}
+
+#screen {
+    margin: 0em;
+}
+
+#end #makeScore{
+    background-color: lightcoral;
+    text-align: center;
+}
+

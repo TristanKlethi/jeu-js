@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div id="plateau">
+        <div class="joueur1">Joueur 1
+            <p>Symbole : X</p>
+        </div>
+        <div class="grille">
+            <div class="case">
+                <img id="1" src="" value="">
+            </div>
+            <div class="case">
+                <img id="2" src="" value="">
+            </div>
+            <div class="case">
+                <img id="3" src="" value="">
+            </div>
+            <div class="case">
+                <img  id="4" src="" value="">
+            </div>
+            <div class="case" >
+                <img id="5" src="" value="">
+            </div>
+            <div class="case">
+                <img id="6" src="" value="">
+            </div>
+            <div class="case">
+                <img id="7" src="" value="">
+            </div>
+            <div class="case">
+                <img id="8" src="" value="">
+            </div>
+            <div class="case">
+                <img id="9" src="" value="">
+            </div>
+        </div>
+        <div class="joueur2">Joueur 2
+            <p>Symbole : O</p>
+        </div> 
+    </div>
+    <div id="controls">
+        <button id="start">Start</button>
+        <div class="end">
+            <button id="restart">Nouvelle partie</button>
+            <div id="score">
+                <p id="screen"></p>
+            </div>
+        </div>    
+        
+    </div>
+    
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script>
+
+        let count = 0
+        let nbCase = 0
+        let croix = "x"
+        let rond = "o"
+        let victoire = ""
+
+
+        $(document).ready(function(){
+            $("#plateau").css("visibility", "hidden")
+            $("#score").hide()
+            $("#restart").hide()
+        })
+        
+        function finPartie(){
+            $("#start").hide()
+            $("#restart").show()
+            $("#score").show()
+            $("#score #screen").append("Fin de la partie")
+        }
+
+        // $(".case img").click(function(){
+        //     $(this).unbind("click")
+        // })
+        
+        function victoireCroix(){
+            $("#score #screen").append("Victoire Joueur 1")
+        }
+
+        function victoireRond(){
+            $("#score #screen").append("Victoire Joueur 2")
+        }
+
+        function matchNul(){
+            $("#score #screen").append("Match nul")
+        }
+
+
+
+
+
+        $("#start").click(function(){
+            $("#plateau").css("visibility", "visible")
+        })
+
+
+        $(".case img").click(function(){                
+            
+                
+            nbCase++
+            if(count == 0) {
+                let pathImgCroix = "./img/croix.png"
+                $(this).attr("src", pathImgCroix)
+                $(this).attr("value", croix)
+                count = 1
+            } else {
+                let pathImgRond = "./img/rond.png"
+                $(this).attr("src", pathImgRond)
+                $(this).attr("value", rond)
+                count = 0
+            }
+            console.log($(this).attr("value"))
+
+            $(this).unbind("click") 
+
+            if (nbCase >= 5){
+                // verificationCroix()
+                // verificationRond()
+            } 
+
+            if(nbCase == 9){
+                finPartie()
+            }
+            
+        })
+        
+        $("#restart").click(function(){
+            $(".case img").attr("src", "")
+            $(".case img").attr("value", "")
+            $(".case img").bind("click")
+        })
+
+        // function verificationCroix(){
+            
+            
+
+        //     if( $($(".case img #1").attr("value")) == "x" && $($(".case img #2").attr("value")) == "x" && $($(".case img #3").attr("value")) == "x"){
+        //         victoire = "x"
+                
+                
+        //     }
+        //     if( $(".case #4 img").attr("value") == "x" && $(".case #5 img").attr("value") == "x" && $(".case #6 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #7 img").attr("value") == "x" && $(".case #8 img").attr("value") == "x" && $(".case #9 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #1 img").attr("value") == "x" && $(".case #5 img").attr("value") == "x" && $(".case #9 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #3 img").attr("value") == "x" && $(".case #5 img").attr("value") == "x" && $(".case #7 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #1 img").attr("value") == "x" && $(".case #4 img").attr("value") == "x" && $(".case #7 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #2 img").attr("value") == "x" && $(".case #5 img").attr("value") == "x" && $(".case #8 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+        //     if( $(".case #3 img").attr("value") == "x" && $(".case #6 img").attr("value") == "x" && $(".case #9 img").attr("value") == "x"){
+        //         victoire = "x"
+        //     }
+            
+        //     if (victoire == "x"){
+        //         victoireCroix()
+        //         finPartie()
+        //     } 
+            
+        // }
+        
+        // function verificationRond(){
+        //     let victoire = ""
+        //     let test = "o"
+
+        //     if( $(".case #1 img").attr("value") == test && $(".case #2 img").attr("value") == test && $(".case #3 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #4 img").attr("value") == test && $(".case #5 img").attr("value") == test && $(".case #6 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #7 img").attr("value") == test && $(".case #8 img").attr("value") == test && $(".case #9 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #1 img").attr("value") == test && $(".case #5 img").attr("value") == test && $(".case #9 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #3 img").attr("value") == test && $(".case #5 img").attr("value") == test && $(".case #7 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #1 img").attr("value") == test && $(".case #4 img").attr("value") == test && $(".case #7 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #2 img").attr("value") == test && $(".case #5 img").attr("value") == test && $(".case #8 img").attr("value") == test){
+        //         victoire = test
+        //     }
+        //     if( $(".case #3 img").attr("value") == test && $(".case #6 img").attr("value") == test && $(".case #9 img").attr("value") == test){
+        //         victoire = test
+        //     }
+
+        //     if (victoire == "o"){
+        //         victoireRond()
+        //         finPartie()
+        //     }
+
+        // }
+
+
+    </script>    
+
+</body>
+</html>
